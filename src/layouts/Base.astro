@@ -7,7 +7,12 @@ const { title = "Mona's Bookmark Manager App" } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <style>
+    <style is:global>
+      /* is:global: this stylesheet styles markup rendered by pages/components
+         passed in via <slot /> (Bookmarks.astro, index.astro), which Astro's
+         default per-component scoping would otherwise not reach — only
+         elements written directly in this file (e.g. <body>) get the
+         scoped data-astro-cid attribute automatically. */
       /* Monaspace webfonts (GitHub Next, SIL OFL 1.1) self-hosted from /public/fonts.
          Neon carries body text; Xenon gives headings a touch of contrast.
          Self-hosting keeps the app fully offline-capable — no runtime CDN needed;
